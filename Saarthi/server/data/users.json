@@ -1,0 +1,99 @@
+[
+  {
+    "mobileNumber": "9102087004",
+    "user_id": "user_1763295964928_dz9nytevx",
+    "userName": "Nistha",
+    "voiceEnrolled": true,
+    "isAtmLinked": true,
+    "isMpinSet": true,
+    "createdAt": "2025-11-16T12:26:04.968Z",
+    "chatHistory": [
+      {
+        "timestamp": "2025-11-17T10:36:06.151Z",
+        "query": "I want to know about loan",
+        "response": "Your loans: Personal Loan: ₹150000 outstanding"
+      },
+      {
+        "timestamp": "2025-11-17T10:36:12.422Z",
+        "query": "what is loan",
+        "response": "Your loans: Personal Loan: ₹150000 outstanding"
+      },
+      {
+        "timestamp": "2025-11-17T10:36:19.245Z",
+        "query": "please can you give me the details about the FD",
+        "response": "Enter your mPIN for FD withdrawal."
+      },
+      {
+        "timestamp": "2025-11-17T10:40:28.816Z",
+        "query": "please set a reminder that I have to send money to vikshita on second of December",
+        "response": "Please provide recipient name and amount."
+      },
+      {
+        "timestamp": "2025-11-17T10:40:44.520Z",
+        "query": "the recipient name is Rakshita Nellore and the amount is 5000",
+        "response": "I didn't understand that. Please say again."
+      },
+      {
+        "timestamp": "2025-11-17T10:40:58.626Z",
+        "query": "the amount that I have to pay is 5",
+        "response": "I didn't understand that. Please say again."
+      },
+      {
+        "timestamp": "2025-11-18T06:31:53.179Z",
+        "query": "what is loan",
+        "response": "Your loans: Personal Loan: ₹150000 outstanding"
+      },
+      {
+        "timestamp": "2025-11-19T11:48:21.316Z",
+        "query": "I want to",
+        "response": "I didn't understand that. Please say again."
+      }
+    ],
+    "atmDetails": {
+      "cardNumberMasked": "****3456",
+      "expiryDate": "12/25",
+      "linkedAt": "2025-11-16T12:27:46.549Z"
+    },
+    "mpin": "1234",
+    "mpinSetAt": "2025-11-16T12:28:15.884Z",
+    "upiId": "nistha@saarthi",
+    "qrCodeData": "data:image/png;base64,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",
+    "upiCreatedAt": "2025-11-19T06:15:13.818Z"
+  },
+  {
+    "mobileNumber": "9398022466",
+    "user_id": "user_1763462004147_gkno7f37w",
+    "userName": "veeks",
+    "voiceEnrolled": true,
+    "isAtmLinked": true,
+    "isMpinSet": true,
+    "createdAt": "2025-11-18T10:33:24.260Z",
+    "chatHistory": [
+      {
+        "timestamp": "2025-11-18T11:00:28.125Z",
+        "query": "अजीत से बात नहीं",
+        "response": "मैं समझ नहीं पाया। कृपया फिर से कहें।"
+      },
+      {
+        "timestamp": "2025-11-18T11:00:59.559Z",
+        "query": "लोन क्या है बताओ",
+        "response": "मैं समझ नहीं पाया। कृपया फिर से कहें।"
+      },
+      {
+        "timestamp": "2025-11-18T11:01:25.275Z",
+        "query": "बकचोद तेरा क्या फायदा अगर तुझे कुछ समझ नहीं आता है तो",
+        "response": "मैं समझ नहीं पाया। कृपया फिर से कहें।"
+      }
+    ],
+    "atmDetails": {
+      "cardNumberMasked": "****5678",
+      "expiryDate": "12/25",
+      "linkedAt": "2025-11-18T10:35:24.580Z"
+    },
+    "mpin": "1234",
+    "mpinSetAt": "2025-11-18T10:35:32.974Z",
+    "upiId": "veeks@saarthi",
+    "qrCodeData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAATfSURBVO3BQY4cSRIEQdNA/v/Lujz6KYBEefU2OSaCf6RqyUnVopOqRSdVi06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXoyYeA/CQ1E5AbNROQSc0E5BNqNgH5SWo+cVK16KRq0UnVoifL1GwCcqPmDTU3aiYgk5obIG+oeUPNJiCbTqoWnVQtOqla9OTLgLyh5hNAbtT8JDXfBOQNNd90UrXopGrRSdWiJ385IDdqboC8AeRGzQRkUvMvO6ladFK16KRq0ZN/HJBJzaRmAjKpmYBMam7U/JecVC06qVp0UrXoyZep+UlqJiA3QN5QMwGZ1NwAmdR8Qs1vclK16KRq0UnVoifLgPzN1ExAJjVvAJnUTEAmNTdAfrOTqkUnVYtOqhY9+ZCa30zNjZpNQCY1N2pu1PxNTqoWnVQtOqla9ORDQCY1bwCZ1ExANgG5UfNNQH6Smhsgk5pPnFQtOqladFK16MmXAZnUTGomIJOaN4DcqHlDzQTkDSCTmhsgN2omIG8A+aaTqkUnVYtOqhY9+ZCaCcik5gbIpGYC8k1AJjUTkBs1E5BJzQ2QSc0bam6A/KSTqkUnVYtOqhY9+TIgk5pJzY2aCcik5gbIBOQTaiYgbwCZ1NwAuVFzo+YGyKaTqkUnVYtOqhY9+RCQSc0EZAIyqbkBMqmZgExqJjU3QCYgk5oJyKRmAvIJIJOaN4BMan7SSdWik6pFJ1WLniwDMqm5AXKj5kbNBOQNNTdAboDcAJnUvAHkDTX/TydVi06qFp1ULXryITU3QG7U3ACZ1ExAJjUTkEnNBGRSM6mZgExqJiCTmjfUTEBu1ExAbtR800nVopOqRSdVi558CMik5kbNDZBJzRtAJjUTkDeAfALIpOYGyKRmAnKj5gbIN51ULTqpWnRStejJl6n5BJBJzRtAbtRMQCY1m4B8E5BJzaTmm06qFp1ULTqpWvRkGZBJzQ2QGzUTkBs1bwCZ1ExA3lAzAblRcwPkBsik5gbIjZpPnFQtOqladFK16MmH1NwAmdS8AeQTQCY1N0DeUPOGmgnIpOZGzQRkAnKjZgKy6aRq0UnVopOqRU++TM0E5EbNDZBJzSfUvAHkBsikZgIyqfkmNT/ppGrRSdWik6pFTz4E5JuATGomIJOaGyBvqJnUbALyBpAbNTdAJjWbTqoWnVQtOqlahH/kLwbkRs0bQCY1E5AbNW8AmdS8AWSTmk+cVC06qVp0UrXoyYeA/CQ1bwCZ1ExANgGZ1ExA3gAyqblR8waQTSdVi06qFp1ULXqyTM0mIDdqJiCTmgnIjZobNTdANql5A8ikZgIyqdl0UrXopGrRSdWiJ18G5A01bwCZ1LyhZgJyo2YCsgnIN6mZgExqPnFSteikatFJ1aInfzk1E5BJzaTmRs0EZALyBpBJzQ2QSc0EZFIzAZmATGq+6aRq0UnVopOqRU/+MWpugGxScwPkBsg3qZmAfNNJ1aKTqkUnVYuefJma30TNDZBJzQTkBsik5g01E5BJzW92UrXopGrRSdWiJ8uA/CQgk5oJyBtqJiA3QG6ATGpugExq3lDzhppNJ1WLTqoWnVQtwj9SteSkatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLTqoWnVQtOqla9D8opjVYj9VldQAAAABJRU5ErkJggg==",
+    "upiCreatedAt": "2025-11-18T10:43:09.189Z"
+  }
+]
