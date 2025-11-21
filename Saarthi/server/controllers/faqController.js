@@ -1,12 +1,9 @@
-const axios = require('axios');
+const MLApiClient = require('../utils/mlApiClient');
 
 /**
  * FAQ Controller
- * Proxies requests to the external FAQ Python server
- * CRITICAL: Translates queryText → query for Python API
+ * Handles chat requests from the Frontend and routes them to the AI Engine.
  */
-
-const FAQ_API_URL = process.env.FAQ_API_URL || 'http://localhost:5000';
 
 const askFaq = async (req, res) => {
   try {
@@ -19,61 +16,56 @@ const askFaq = async (req, res) => {
       });
     }
 
-    console.log('FAQ Query:', queryText);
+    console.log('📩 Incoming Chat Query:', queryText);
 
-    // CRITICAL TRANSLATION: queryText → query
-    const response = await axios.post(`${FAQ_API_URL}/ask`, {
-      query: queryText // Python server expects "query", not "queryText"
-    }, {
-      timeout: 10000 // 10 second timeout
-    });
+    // 1. Call your AI Engine
+    const aiResponse = await MLApiClient.getFaqAnswer(queryText);
 
-    console.log('FAQ Response:', response.data);
-
-    // Send answer back to React
-    res.json({
-      success: true,
-      answer: response.data.answer || 'No answer available'
-    });
+    if (aiResponse && aiResponse.answer) {
+        // 2. Success! Send AI answer back to React
+        console.log('✅ AI Answer:', aiResponse.answer);
+        return res.json({
+            success: true,
+            answer: aiResponse.answer
+        });
+    } else {
+        // 3. Fallback if AI is offline or returns no answer
+        return res.json({
+            success: true, // Keep success true so app doesn't crash
+            answer: "I'm sorry, I am currently unable to connect to my knowledge base."
+        });
+    }
 
   } catch (error) {
-    console.error('Error calling FAQ server:', error.message);
+    console.error('🔥 FAQ Controller Error:', error.message);
     
-    // Friendly error message
     res.status(500).json({
       success: false,
-      answer: 'Saarthi is thinking... please try again.'
+      answer: 'Something went wrong. Please try again later.'
     });
   }
 };
 
+// This function can be expanded later for full intent prediction
 const predictFaq = async (req, res) => {
   try {
     const { queryText } = req.body;
+    if (!queryText) return res.status(400).json({ success: false, answer: 'No text provided' });
 
-    if (!queryText) {
-      return res.status(400).json({
-        success: false,
-        answer: 'Please provide a question'
-      });
-    }
-
-    console.log('FAQ Predict Query:', queryText);
-
-    const response = await axios.post(`${FAQ_API_URL}/ask`, { query: queryText }, { timeout: 15000 });
+    // For now, we route this through the same FAQ logic
+    // Later you can switch this to MLApiClient.predictIntent(queryText)
+    const aiResponse = await MLApiClient.getFaqAnswer(queryText);
 
     res.json({
       success: true,
-      answer: response.data?.answer || 'Saarthi is thinking... please try again.',
-      intent: response.data?.intent ?? null,
-      entities: response.data?.entities ?? []
+      answer: aiResponse?.answer || 'Processing...',
+      intent: null, // Placeholder for Task 1.1
+      entities: []
     });
+
   } catch (error) {
-    console.error('FAQ Predict error:', error.message);
-    res.status(error?.response?.status || 500).json({
-      success: false,
-      answer: 'Saarthi is thinking... please try again.'
-    });
+    console.error('Predict Error:', error.message);
+    res.status(500).json({ success: false, answer: 'Error processing request' });
   }
 };
 

@@ -1,27 +1,48 @@
 const axios = require('axios');
 const FormData = require('form-data');
 
-// ML API Base URL - Update this to match your ML server IP
-const ML_API_BASE_URL = process.env.ML_API_URL || 'http://localhost:5000';
+// ✅ UPDATE: Pointing to Port 5001 (Your AI Engine)
+const ML_API_BASE_URL = process.env.ML_API_URL || 'http://localhost:5001';
 
 /**
- * ML API Client for Voice Biometrics and NLP
- * This module communicates with the Saarthi AI/ML Flask service
+ * ML API Client for Saarthi
+ * Connects Node.js Backend -> Python AI Engine
  */
-
 class MLApiClient {
+
+  /**
+   * FAQ RAG SYSTEM (Your AI Module)
+   * Connects to /faq-answer
+   */
+  static async getFaqAnswer(userQuestion) {
+    try {
+      console.log(`🤖 Asking AI Engine: "${userQuestion}"...`);
+      
+      const response = await axios.post(
+        `${ML_API_BASE_URL}/faq-answer`, 
+        { question: userQuestion }, // ✅ Matches your app.py input
+        { 
+          headers: { 'Content-Type': 'application/json' },
+          timeout: 10000 // 10s timeout
+        }
+      );
+
+      return response.data; // Expected: { answer: "..." }
+    } catch (error) {
+      console.error('❌ ML API - FAQ Error:', error.message);
+      // Return null so the controller knows it failed
+      return null;
+    }
+  }
+
   /**
    * VOICE BIOMETRICS - Enroll a new user
-   * @param {string} userId - Unique user identifier
-   * @param {Array<Buffer>} audioSamples - Array of 3-5 audio file buffers
-   * @returns {Promise<Object>} Enrollment result
    */
   static async enrollVoice(userId, audioSamples) {
     try {
       const formData = new FormData();
       formData.append('user_id', userId);
       
-      // Append each audio sample
       audioSamples.forEach((audioBuffer, index) => {
         formData.append('audio_sample', audioBuffer, `sample_${index}.wav`);
       });
@@ -31,22 +52,19 @@ class MLApiClient {
         formData,
         {
           headers: formData.getHeaders(),
-          timeout: 30000 // 30 second timeout
+          timeout: 30000
         }
       );
 
       return response.data;
     } catch (error) {
       console.error('ML API - Enroll Voice Error:', error.message);
-      throw new Error('Voice enrollment failed. Please try again.');
+      throw new Error('Voice enrollment failed.');
     }
   }
 
   /**
    * VOICE BIOMETRICS - Verify a user's voice
-   * @param {string} userId - Unique user identifier
-   * @param {Buffer} audioBuffer - Single audio file buffer for verification
-   * @returns {Promise<Object>} Verification result with authenticated status
    */
   static async verifyVoice(userId, audioBuffer) {
     try {
@@ -59,37 +77,32 @@ class MLApiClient {
         formData,
         {
           headers: formData.getHeaders(),
-          timeout: 15000 // 15 second timeout
+          timeout: 15000
         }
       );
 
       return response.data;
     } catch (error) {
       console.error('ML API - Verify Voice Error:', error.message);
-      throw new Error('Voice verification failed. Please try again.');
+      throw new Error('Voice verification failed.');
     }
   }
 
   /**
-   * NLP - Predict intent and extract entities from text query
-   * @param {string} query - User's text query
-   * @returns {Promise<Object>} Intent and entities
+   * NLP - Predict intent (Future Task 1.1)
    */
   static async predictIntent(query) {
     try {
       const response = await axios.post(
-        `${ML_API_BASE_URL}/predict`,
-        { query },
-        {
-          headers: { 'Content-Type': 'application/json' },
-          timeout: 10000 // 10 second timeout
-        }
+        `${ML_API_BASE_URL}/predict-intent`, // Updated endpoint name
+        { text: query },
+        { timeout: 10000 }
       );
 
       return response.data;
     } catch (error) {
       console.error('ML API - Predict Intent Error:', error.message);
-      throw new Error('Intent prediction failed. Please try again.');
+      return null;
     }
   }
 }

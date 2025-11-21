@@ -43,5 +43,5 @@ app.use(errorHandler);
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📡 Make sure ML API is running on http://localhost:5000`);
+  console.log(`📡 Make sure ML API is running on http://localhost:5001`);
 });
